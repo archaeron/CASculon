@@ -1,4 +1,4 @@
-﻿module Calculon.Types
+﻿namespace Calculon.Types
 
 type Const =
     | Number of float
