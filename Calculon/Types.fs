@@ -1,4 +1,4 @@
-﻿namespace Calculon.Types
+﻿module Calculon.Types
 
 type Symbol = string
 
