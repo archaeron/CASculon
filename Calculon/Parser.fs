@@ -14,7 +14,7 @@ module Parser =
 
     let matrixBetweenDelimiters sOpen sClose secondarySeparator separator  pElement f =
         between (pstring sOpen) (pstring sClose)
-            (spaces >>. sepBy (listBetweenSecondary pElement secondarySeparator f .>> spaces) (pstring separator >>. spaces) |>> f)
+            (spaces >>. sepEndBy (listBetweenSecondary pElement secondarySeparator f .>> spaces) (pstring separator >>. spaces) |>> f)
 
     let matrixParser =
         matrixBetweenDelimiters "[" "]" "," ";" numberParser List
@@ -28,7 +28,8 @@ module Parser =
     let listParser =
         listBetweenStrings "[" "]" "," numberParser List
 
-    let t = run listParser "[1, 2, 3]"
+    let t = run matrixParser "[1, 2, 3]"
 
-    let parse s =
-        Assignment ("x", (Multiplication (Constant (Number 5), Constant (Number 4))))
+
+    //let parse s =
+        //Assignment ("x", (Multiplication (Constant (Number 5), Constant (Number 4))))
