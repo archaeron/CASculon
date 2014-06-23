@@ -1,14 +1,13 @@
 ﻿namespace Calculon.Types
 
+type Symbol = string
+
 type Const =
     | Number of float
     | Complex of float * float
     | BigInt of bigint
-    | Matrix of Const list list
-
-type Symbol = string
-
-type Expr =
+    | Matrix of Expr list list
+and Expr =
     | Exponentiation of Expr * Expr
     | Multiplication of Expr * Expr
     | Addition of Expr * Expr
