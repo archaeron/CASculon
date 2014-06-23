@@ -8,8 +8,8 @@ open Calculon.Types
 module Parser =
     let str_ws str = skipString str >>. spaces
 
-    let numberParser : Parser<Const, Unit> =
-        pfloat |>> Number
+    let numberParser : Parser<Expr, Unit> =
+        pfloat |>> (Constant << Number)
 
     let variableParser : Parser<Symbol, Unit> =
         identifier (IdentifierOptions())
@@ -20,7 +20,7 @@ module Parser =
             do! spaces
             do! str_ws "="
             let! expression = numberParser
-            return Assignment (variable, Constant expression)}
+            return Assignment (variable, expression)}
 
     let listParser pElement separator =
         spaces >>. sepBy (pElement .>> spaces) (pstring separator >>. spaces)

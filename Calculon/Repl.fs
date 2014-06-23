@@ -15,7 +15,5 @@ let rec repl s =
     | _ ->
         Console.Write ">> "
         let input = Console.ReadLine()
-        print Parser.parse "[1,2,3]"
         print Parser.parse input
-        Console.ReadLine() |> ignore
         repl input
