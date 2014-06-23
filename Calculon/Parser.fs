@@ -21,17 +21,17 @@ module Parser =
             do! str_ws "="
             let! expression = numberParser
             return Assignment (variable, Constant expression)}
-        
 
-    let listBetweenStrings sOpen sClose separator pElement f =
+    let listParser pElement separator =
+        spaces >>. sepBy (pElement .>> spaces) (pstring separator >>. spaces)
+
+    let matrixBetweenDelimiters sOpen sClose secondarySeparator separator  pElement f =
         between (pstring sOpen) (pstring sClose)
-                (spaces >>. sepBy (pElement .>> spaces) (pstring separator >>. spaces) |>> f)
+            (spaces >>. sepEndBy (listParser pElement secondarySeparator .>> spaces) (pstring separator >>. spaces) |>> f)
 
-    let listParser =
-        listBetweenStrings "[" "]" "," numberParser List
+    let matrixParser =
+        matrixBetweenDelimiters "[" "]" "," ";" numberParser Matrix
 
-    let t = run listParser "[1, 2, 3]"
+    let parse =
 
-    let parse s =
-
-        Assignment ("x", (Multiplication (Constant (Number 5), Constant (Number 4))))
+        matrixParser

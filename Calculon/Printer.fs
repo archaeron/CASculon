@@ -1,16 +1,13 @@
 ﻿
-namespace Calculon.Printer
+module Calculon.Printer
 open System
 open Calculon.Types
 
 let printConstant =
     function
-    | Integer i -> sprintf "%i" i
-    | Float f -> sprintf "%f" f
+    | Number i -> sprintf "%f" i
     | Complex (real, complex) -> "Hallo"
     | BigInt r -> "Hallo"
-    | List l -> "Hallo"
-    | Vector v -> "Hallo"
     | Matrix m -> "Hallo"
 
 
