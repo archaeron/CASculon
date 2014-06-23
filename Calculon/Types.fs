@@ -4,8 +4,6 @@ type Const =
     | Number of float
     | Complex of float * float
     | BigInt of bigint
-    | List of Const list
-    | Vector of Const list
     | Matrix of Const list list
 
 type Symbol = string
