@@ -1,8 +1,7 @@
 ﻿namespace Calculon.Types
 
 type Const =
-    | Integer of int
-    | Float of float
+    | Number of float
     | Complex of float * float
     | BigInt of bigint
     | List of Const list
