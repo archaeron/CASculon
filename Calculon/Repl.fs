@@ -9,11 +9,12 @@ let print p str =
     | Success(result, _, _)   -> printfn "Success: %A" result
     | Failure(errorMsg, _, _) -> printfn "Failure: %s" errorMsg
 
-let rec repl s =
+let rec repl s history =
     match s with
     | "quit" -> Console.WriteLine "byebye"
+    | "history" -> printfn "%A" history
     | _ ->
         Console.Write ">> "
         let input = Console.ReadLine()
         print Parser.parse input
-        repl input
+        repl input (input::history)
