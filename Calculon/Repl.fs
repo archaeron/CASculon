@@ -1,4 +1,7 @@
-﻿module Calculon.Repl
+﻿/// here is how FSI does it:
+// https://github.com/fsharp/fsharp/blob/master/src/fsharp/fsi/console.fs
+
+module Calculon.Repl
 
 open System
 open Calculon.Parser
