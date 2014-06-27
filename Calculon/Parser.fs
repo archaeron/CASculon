@@ -6,19 +6,24 @@ open FParsec.CharParsers
 open Calculon.Types
 
 module Parser =
-    let str_ws str = skipString str >>. spaces
+    let ws = spaces
+    let str_ws str = pstring str >>. ws
 
     let numberParser =
-        pfloat |>> (Constant << Number)
+        (pfloat .>> ws) |>> (Constant << Number)
     
-    let arithmeticParser sign f = 
-        tuple2 numberParser (spaces .>> str_ws sign >>. spaces >>. numberParser) |>> f
 
-    let product =
-        arithmeticParser "*" Multiplication
+    let opp = new OperatorPrecedenceParser<Expr,unit,unit>()
+    let expr = opp.ExpressionParser
+    let term = numberParser <|> between (str_ws "(") (str_ws ")") expr
+    opp.TermParser <- term
 
-    let addition =
-        arithmeticParser "+" Addition
+    type Assoc = Associativity
+
+    opp.AddOperator(InfixOperator("+", ws, 1, Assoc.Left, fun x y -> Addition (x, y)))
+    opp.AddOperator(InfixOperator("*", ws, 2, Assoc.Left, fun x y -> Multiplication (x, y)))
+ 
+
 
     let variableParser : Parser<Symbol, Unit> =
         identifier (IdentifierOptions())
@@ -46,5 +51,6 @@ module Parser =
     let expressionParser =
          attempt product <|> attempt addition <|> attempt matrixParser <|> numberParser
 
-    let parse input =
-        expressionParser input
+    let parse =
+        //expressionParser input
+        expr
