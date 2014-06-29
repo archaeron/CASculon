@@ -20,8 +20,10 @@ module Parser =
 
     type Assoc = Associativity
 
-    opp.AddOperator(InfixOperator("+", ws, 1, Assoc.Left, fun x y -> Addition (x, y)))
-    opp.AddOperator(InfixOperator("*", ws, 2, Assoc.Left, fun x y -> Multiplication (x, y)))
+    // operator precedence table
+    // http://kevincantu.org/code/operators.html
+    opp.AddOperator(InfixOperator("+", ws, 6, Assoc.Left, fun x y -> Addition (x, y)))
+    opp.AddOperator(InfixOperator("*", ws, 7, Assoc.Left, fun x y -> Multiplication (x, y)))
  
 
 
@@ -46,10 +48,10 @@ module Parser =
             (spaces >>. sepEndBy (listParser pElement secondarySeparator .>> spaces) (pstring separator >>. spaces) |>> f)
 
     let matrixParser : Parser<Expr,Unit> =
-        matrixBetweenDelimiters "[" "]" "," ";" numberParser (Constant << Matrix)
+        matrixBetweenDelimiters "[" "]" "," ";" expr (Constant << Matrix)
 
     let expressionParser =
-         attempt product <|> attempt addition <|> attempt matrixParser <|> numberParser
+        matrixParser <|> numberParser
 
     let parse =
         //expressionParser input
