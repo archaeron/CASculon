@@ -10,8 +10,10 @@ type Const =
 and Expr =
     | Exponentiation of Expr * Expr
     | Multiplication of Expr * Expr
+    | Division of Expr * Expr
     | Addition of Expr * Expr
-    | Variable of Symbol
+    | Subtraction of Expr * Expr
+    | Identifier of Symbol
     | Assignment of Symbol * Expr
     | Call of Expr * Expr
     | Constant of Const
