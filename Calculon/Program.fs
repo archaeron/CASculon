@@ -1,5 +1,5 @@
 ﻿// Learn more about F# at http://fsharp.net
-// See the 'F# Tutorial' project for more help.
+// See the 'F# Tutorial' project for more help.s
 open FParsec
 open FParsec.Primitives
 open FParsec.CharParsers
@@ -12,6 +12,6 @@ open Calculon.Repl
 let main argv = 
     printfn "%A" argv
 
-    repl "" []
+    repl []
     0 // return an integer exit code
 
