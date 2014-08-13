@@ -46,11 +46,10 @@ module Parser =
     // operator precedence table
     // http://kevincantu.org/code/operators.html
     opp.AddOperator(InfixOperator("+", ws, 6, Associativity.Left, fun x y -> Addition (x, y)))
-    opp.AddOperator(InfixOperator("-", ws, 7, Associativity.Left, fun x y -> Subtraction (x, y)))
+    opp.AddOperator(InfixOperator("-", ws, 6, Associativity.Left, fun x y -> Subtraction (x, y)))
     opp.AddOperator(InfixOperator("*", ws, 7, Associativity.Left, fun x y -> Multiplication (x, y)))
     opp.AddOperator(InfixOperator("/", ws, 7, Associativity.Left, fun x y -> Division (x, y)))
     opp.AddOperator(InfixOperator("^", ws, 8, Associativity.Right, fun x y -> Exponentiation (x, y)))
-
 
 
 
