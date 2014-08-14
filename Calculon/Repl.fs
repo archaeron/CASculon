@@ -18,8 +18,8 @@ let print p input =
 
 // Todo: Type for pos
 
-
-let offset = 3
+let lineIndicator = ">> "
+let offset = lineIndicator.Length
    
 type internal Cursor =
     static member ResetTo(top,left) = 
@@ -129,7 +129,7 @@ let rec inputLoop (input:string) history =
 
 
 let rec repl history =
-    Console.Write ">> "
+    Console.Write lineIndicator
     let input = inputLoop "" history
     Console.Write('\n')
     print Parser.parse input
