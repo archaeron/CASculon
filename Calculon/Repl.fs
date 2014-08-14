@@ -107,6 +107,12 @@ let rec inputLoop (input:string) history =
             Cursor.Move(offset, - 1)
             render input
         inputLoop input history
+    | ConsoleKey.RightArrow ->
+        if (!current > 0 && (!current - 1 < input.Length)) then
+            current := !current + 1;
+            Cursor.Move(offset, 1)
+            render input
+        inputLoop input history
     | _ ->
         current := !current + 1;
         let i = (input.Insert (!current - 1,cki.KeyChar.ToString()))
