@@ -91,11 +91,10 @@ let rec inputLoop (input:string) history =
         | h ->
             let i = (List.head history)
             render i
-            let anchor = ref (Anchor.Current(1));
-            (!anchor).PlaceAt(1,i.Length);
             inputLoop i (List.tail history)
+    | ConsoleKey.DownArrow -> 
+       inputLoop input history
     | ConsoleKey.Backspace ->
-        // todo: something along the lines of: 
         let i =
             if (!current < 1 || (!current - 1) > input.Length) then
                 input
@@ -108,13 +107,13 @@ let rec inputLoop (input:string) history =
         if (!current > 0 && (!current - 1 < input.Length)) then
             current := !current - 1;
             Cursor.Move(offset, - 1)
-            render input
+            //render input
         inputLoop input history
     | ConsoleKey.RightArrow ->
-        if (!current > 0 && (!current - 1 < input.Length)) then
+        if (!current >= 0 && (!current < input.Length)) then
             current := !current + 1;
             Cursor.Move(offset, 1)
-            render input
+            //render input
         inputLoop input history
     | _ ->
         let i =
