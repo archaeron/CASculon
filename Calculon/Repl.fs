@@ -101,7 +101,7 @@ let rec inputLoop (input:string) (history, hIndex) =
                 input
             else
                 current := !current - 1;
-                input.Remove (!current)
+                input.Remove (!current, 1)
         render i
         inputLoop i (history, hIndex)
     | ConsoleKey.LeftArrow ->
