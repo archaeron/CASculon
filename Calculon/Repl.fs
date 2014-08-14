@@ -86,19 +86,22 @@ let rec inputLoop (input:string) history =
     | ConsoleKey.Enter ->
         input
     | ConsoleKey.UpArrow -> 
-        let i = (List.head history)
-        render i
-        let anchor = ref (Anchor.Current(1));
-        (!anchor).PlaceAt(1,i.Length);
-        inputLoop i (List.tail history)
+        match history with
+        | [] -> inputLoop input []
+        | h ->
+            let i = (List.head history)
+            render i
+            let anchor = ref (Anchor.Current(1));
+            (!anchor).PlaceAt(1,i.Length);
+            inputLoop i (List.tail history)
     | ConsoleKey.Backspace ->
         // todo: something along the lines of: 
         let i =
-            if ((!current-1) < 2 || (!current-1) > input.Length) then
+            if (!current < 1 || (!current - 1) > input.Length) then
                 input
             else
                 current := !current - 1;
-                (input.Remove (!current-1))
+                input.Remove (!current)
         render i
         inputLoop i history
     | ConsoleKey.LeftArrow ->
@@ -114,8 +117,12 @@ let rec inputLoop (input:string) history =
             render input
         inputLoop input history
     | _ ->
+        let i =
+            if input.Length > 0 then
+                (input.Insert (!current,cki.KeyChar.ToString()))
+            else
+                cki.KeyChar.ToString()  
         current := !current + 1;
-        let i = (input.Insert (!current - 1,cki.KeyChar.ToString()))
         render i
         inputLoop i history
 
