@@ -15,11 +15,8 @@ let print p input =
     | Failure(errorMsg, _, _) -> printfn "Failure: %s" errorMsg
 
 
-
-// Todo: Type for pos
-
 let lineIndicator = ">> "
-let offset = lineIndicator.Length
+let offset = String.length lineIndicator
    
 type internal Cursor =
     static member ResetTo(top,left) = 
@@ -76,61 +73,71 @@ let render (input:string) =
 
     (!anchor).PlaceAt(1,position);
 
-let rec inputLoop (input:string) history = 
+
+
+let rec inputLoop (input:string) (history, hIndex) = 
     let cki = Console.ReadKey true
-//    match input with
-//    | "quit" -> Console.WriteLine "byebye"
-//    | "history" -> printfn "%A" history
-//    | _ -> 
+
     match cki.Key with
     | ConsoleKey.Enter ->
         input
     | ConsoleKey.UpArrow -> 
-        match history with
-        | [] -> inputLoop input []
-        | h ->
-            let i = (List.head history)
+        if (hIndex > 0 && hIndex <= List.length history) then
+            let i = List.nth (List.rev history) (hIndex - 1)
             render i
-            inputLoop i (List.tail history)
+            inputLoop i (history, hIndex - 1)
+        else
+            inputLoop input (history, hIndex)
     | ConsoleKey.DownArrow -> 
-       inputLoop input history
+        if (hIndex > 0 && hIndex <= List.length history) then
+            let i = List.nth (List.rev history) (hIndex + 1)
+            render i
+            inputLoop i (history, hIndex + 1)
+        else
+            inputLoop input (history, hIndex)
     | ConsoleKey.Backspace ->
         let i =
-            if (!current < 1 || (!current - 1) > input.Length) then
+            if (!current < 1 || (!current - 1) > String.length input) then
                 input
             else
                 current := !current - 1;
                 input.Remove (!current)
         render i
-        inputLoop i history
+        inputLoop i (history, hIndex)
     | ConsoleKey.LeftArrow ->
-        if (!current > 0 && (!current - 1 < input.Length)) then
+        if (!current > 0 && (!current - 1 < String.length input)) then
             current := !current - 1;
             Cursor.Move(offset, - 1)
             //render input
-        inputLoop input history
+        inputLoop input (history, hIndex)
     | ConsoleKey.RightArrow ->
-        if (!current >= 0 && (!current < input.Length)) then
+        if (!current >= 0 && (!current < String.length input)) then
             current := !current + 1;
             Cursor.Move(offset, 1)
             //render input
-        inputLoop input history
+        inputLoop input (history, hIndex)
     | _ ->
         let i =
-            if input.Length > 0 then
+            if !current > 0 && !current <= String.length input then
                 (input.Insert (!current,cki.KeyChar.ToString()))
             else
                 cki.KeyChar.ToString()  
         current := !current + 1;
         render i
-        inputLoop i history
+        inputLoop i (history, hIndex)
 
 
 
-let rec repl history =
+let rec repl (history, hIndex) =
     Console.Write lineIndicator
-    let input = inputLoop "" history
+    let input = inputLoop "" (history, hIndex)
     Console.Write('\n')
-    print Parser.parse input
-    current := 0
-    repl (input::history)+1
+    match input with
+    | "quit" -> Console.WriteLine "byebye"
+    | "history" ->
+        printfn "%A" history
+        repl (input::history, hIndex + 1)
+    | _ -> 
+        print Parser.parse input
+        current := 0
+        repl (input::history, hIndex + 1)

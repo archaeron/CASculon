@@ -12,6 +12,6 @@ open Calculon.Repl
 let main argv = 
     printfn "%A" argv
 
-    repl []
+    repl ([],0)
     0 // return an integer exit code
 
