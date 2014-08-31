@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{4925A630-B079-445d-BCD4-3A9C94FE9307}") = "Calculon", "Calculon\Calculon.fsproj", "{75A07F12-FF61-4CE9-8541-25FBB76A9870}"
+Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Calculon", "Calculon\Calculon.fsproj", "{75A07F12-FF61-4CE9-8541-25FBB76A9870}"
+EndProject
+Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Tests", "Tests\Tests.fsproj", "{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Debug|x86.Build.0 = Debug|x86
 		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Release|x86.ActiveCfg = Release|x86
 		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Release|x86.Build.0 = Release|x86
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Debug|x86.Build.0 = Debug|Any CPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Release|x86.ActiveCfg = Release|Any CPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Calculon\Calculon.fsproj
