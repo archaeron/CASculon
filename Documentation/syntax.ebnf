@@ -1,0 +1,45 @@
+(* be kind to unicodes *)
+expr = addSub | assignmnet
+
+
+whitespace = { #'\s' };
+<optionalWhitespace> = [ whitespace ];
+
+<nat> = #"\d+"
+<leftParen> = '(';
+<rightParen> = ')';
+plus = <'+'>;
+minus = <'-'>;
+times = <'*'>;
+dividedBy = <'/'>;
+
+<int> = [ plus | minus ], nat;
+<plusMinus> = <optionalWhitespace>, ( plus | minus ), <optionalWhitespace>;
+<timesDividedBy> = <optionalWhitespace>, ( times | dividedBy ), <optionalWhitespace>;
+<expBy> = <optionalWhitespace>, '^', <optionalWhitespace>;
+
+natural = nat
+integer = int;
+real = integer, <'.'>, natural;
+
+<lowerCaseCharacter> = 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z';
+<upperCaseCharacter> = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z';
+identifier = #'[a-zA-Z]+';
+(*<optionalWhitespace>, lowerCaseCharacter, { lowerCaseCharacter | upperCaseCharacter | nat }, <optionalWhitespace>;*)
+
+row = addSub, { <','>, addSub };
+matrix = '[', row, { <';'>, row }, ']';
+set = '{', row, '}';
+
+literal = <optionalWhitespace>, ( integer | real | identifier | matrix | set ), <optionalWhitespace>;
+
+addSub = (mulDiv, plusMinus, addSub) | mulDiv;
+mulDiv = (exponentiation, timesDividedBy, mulDiv) | exponentiation;
+exponentiation = (factor, expBy, exponentiation) | factor;
+factor = (leftParen, addSub, rightParen) | literal;
+
+assignmnet = identifier, <'='>, addSub;
+
+
+
+(* sets? (expand {1, 2, 3} to set([1, 2, 3]) ?) *)
