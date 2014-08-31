@@ -67,6 +67,11 @@ module Parser =
     let expressionParser =
         matrixParser <|> numberParser
 
-    let parse =
+    let parser =
         //expressionParser input
         expr
+
+    let parse s =
+        match run parser s with
+        | Success(result, _, _) -> Choice1Of2 result
+        | Failure(errorMsg, _, _) -> Choice2Of2 errorMsg

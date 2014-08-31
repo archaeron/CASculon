@@ -9,9 +9,9 @@ open Calculon.Printer
 open FParsec
  
 let print p str =
-    match run p str with
-    | Success(result, _, _)   -> printfn "Success: %A" <| Printer.print result
-    | Failure(errorMsg, _, _) -> printfn "Failure: %s" errorMsg
+    match p str with
+    | Choice1Of2 result   -> printfn "Success: %A" <| Printer.print result
+    | Choice2Of2 errorMsg -> printfn "Failure: %s" errorMsg
 
 let rec repl s history =
     match s with
