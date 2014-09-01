@@ -17,3 +17,10 @@ and Expr =
     | Assignment of Symbol * Expr
     | Call of Expr * Expr
     | Constant of Const
+
+
+let num = Number >> Constant
+let add a b = Addition (a, b)
+let sub a b = Subtraction (a, b)
+let mult a b = Multiplication (a, b)
+let div a b = Division (a, b) 
