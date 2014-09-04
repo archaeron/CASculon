@@ -10,8 +10,8 @@ type ParserTests() =
 
     [<Test>]
     member x.SimpleNumber() =
-        let expected: Choice<Expr, String> = 5.0 |> Number |> Constant |> Choice1Of2
-        Assert.AreEqual(expected, parse "5")
+        let expr = num 5.0
+        Assert.AreEqual(exprToChoice expr, parse "5")
 
     [<Test>]
     member x.Addition() =
@@ -33,7 +33,5 @@ type ParserTests() =
         let number2 = num 2.0
         let number3 = num 3.0
         let mult = mult number2 number3
-        let addition = add number1 mult
-
-        let expr: Choice<Expr, String> = addition |> Choice1Of2
-        Assert.AreEqual(expr, parse "4 + 2 * 3")
+        let expr = add number1 mult
+        Assert.AreEqual(exprToChoice expr, parse "4 + 2 * 3")
