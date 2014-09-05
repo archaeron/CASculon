@@ -2,7 +2,7 @@
 open System
 open Calculon.Types
 
-let rec intersperse sep (xs: string list) = System.String.Join(sep, xs)
+let intersperse = String.concat
 
 
 let rec printConstant =
