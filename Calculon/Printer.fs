@@ -2,6 +2,9 @@
 open System
 open Calculon.Types
 
+let rec intersperse sep (xs: string list) = System.String.Join(sep, xs)
+
+
 let rec printConstant =
     function
     | Number i ->
@@ -13,8 +16,9 @@ let rec printConstant =
     | Complex (real, complex) -> "Complex"
     | BigInt r -> "BigInt"
     | Matrix m ->
-        let listOfStrings = m |> List.map (List.map print)
-        sprintf "%A" listOfStrings
+        let listOfStrings = m |> List.map (intersperse ", " << List.map print)
+        let out = listOfStrings |> intersperse "; "
+        "[" + out + "]"
 
 and print =
     function
