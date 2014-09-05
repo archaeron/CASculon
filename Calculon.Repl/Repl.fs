@@ -6,7 +6,6 @@ module Calculon.Repl
 open System
 open Calculon.Parser
 open Calculon.Printer
-open FParsec
 open System.Text
  
 let print p str =

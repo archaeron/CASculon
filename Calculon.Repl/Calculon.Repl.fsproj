@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{75A07F12-FF61-4CE9-8541-25FBB76A9870}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Calculon</RootNamespace>
-    <AssemblyName>Calculon</AssemblyName>
+    <ProjectGuid>{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Calculon.Repl</RootNamespace>
+    <AssemblyName>Calculon.Repl</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -15,7 +15,7 @@
     <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <ConsolePause>false</ConsolePause>
+    <Externalconsole>true</Externalconsole>
     <Tailcalls>false</Tailcalls>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
@@ -35,22 +35,17 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
-    <Reference Include="FParsec">
-      <HintPath>..\packages\FParsec.1.0.1\lib\net40-client\FParsec.dll</HintPath>
-    </Reference>
-    <Reference Include="FParsecCS">
-      <HintPath>..\packages\FParsec.1.0.1\lib\net40-client\FParsecCS.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Types.fs" />
-    <Compile Include="Parser.fs">
-    </Compile>
-    <Compile Include="Printer.fs" />
+    <Compile Include="Repl.fs" />
+    <Compile Include="Program.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.1\Framework\v4.0\Microsoft.FSharp.Targets" />
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Calculon\Calculon.fsproj">
+      <Project>{75A07F12-FF61-4CE9-8541-25FBB76A9870}</Project>
+      <Name>Calculon</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

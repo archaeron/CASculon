@@ -5,12 +5,18 @@ Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Calculon", "Calculon\Calcul
 EndProject
 Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Tests", "Tests\Tests.fsproj", "{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}"
 EndProject
+Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Calculon.Repl", "Calculon.Repl\Calculon.Repl.fsproj", "{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Debug|x86.ActiveCfg = Debug|x86
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Debug|x86.Build.0 = Debug|x86
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Release|x86.ActiveCfg = Release|x86
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Release|x86.Build.0 = Release|x86
 		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Debug|x86.ActiveCfg = Debug|x86
 		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Debug|x86.Build.0 = Debug|x86
 		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Release|x86.ActiveCfg = Release|x86
@@ -21,6 +27,6 @@ Global
 		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Calculon\Calculon.fsproj
+		StartupItem = Calculon.Repl\Calculon.Repl.fsproj
 	EndGlobalSection
 EndGlobal
