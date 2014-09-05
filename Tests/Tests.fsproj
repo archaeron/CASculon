@@ -36,8 +36,10 @@
     <Reference Include="FSharp.Core" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="nunit.framework" />
     <Reference Include="System.Numerics" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Test.fs" />
@@ -50,5 +52,8 @@
       <Project>{75A07F12-FF61-4CE9-8541-25FBB76A9870}</Project>
       <Name>Calculon</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
