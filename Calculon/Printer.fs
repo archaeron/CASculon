@@ -1,5 +1,4 @@
-﻿
-module Calculon.Printer
+﻿module Calculon.Printer
 open System
 open Calculon.Types
 

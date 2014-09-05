@@ -1,7 +1,7 @@
 /// here is how FSI does it:
 // https://github.com/fsharp/fsharp/blob/master/src/fsharp/fsi/console.fs
 //
-module Calculon.Repl
+module Calculon.Repl.Core
 
 open System
 open Calculon.Parser
@@ -10,7 +10,7 @@ open System.Text
  
 let print p str =
     match p str with
-    | Choice1Of2 result   -> printfn "Success: %A" <| Printer.print result
+    | Choice1Of2 result   -> printfn "Success: %A" <| print result
     | Choice2Of2 errorMsg -> printfn "Failure: %s" errorMsg
 
 
@@ -137,6 +137,6 @@ let rec repl (history, hIndex) =
         printfn "%A" history
         repl (input::history, hIndex + 1)
     | _ -> 
-        print Parser.parse input
+        print parse input
         current := 0
         repl (input::history, hIndex + 1)
