@@ -1,30 +1,64 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Calculon", "Calculon\Calculon.fsproj", "{75A07F12-FF61-4CE9-8541-25FBB76A9870}"
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Calculon", "Calculon\Calculon.fsproj", "{75A07F12-FF61-4CE9-8541-25FBB76A9870}"
 EndProject
-Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Tests", "Tests\Tests.fsproj", "{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tests", "Tests\Tests.fsproj", "{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}"
 EndProject
-Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Calculon.Repl", "Calculon.Repl\Calculon.Repl.fsproj", "{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Calculon.Repl", "Calculon.Repl\Calculon.Repl.fsproj", "{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8AC4B7C0-E2CA-4FDA-ACF1-50861776DCB7}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Debug|x86.ActiveCfg = Debug|x86
-		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Debug|x86.Build.0 = Debug|x86
-		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Release|x86.ActiveCfg = Release|x86
-		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Release|x86.Build.0 = Release|x86
-		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Debug|x86.ActiveCfg = Debug|x86
-		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Debug|x86.Build.0 = Debug|x86
-		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Release|x86.ActiveCfg = Release|x86
-		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Release|x86.Build.0 = Release|x86
-		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Debug|x86.Build.0 = Debug|Any CPU
-		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Release|x86.ActiveCfg = Release|Any CPU
-		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Release|x86.Build.0 = Release|Any CPU
+		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Debug|Any CPU.ActiveCfg = Debug|AnyCPU
+		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Debug|Mixed Platforms.ActiveCfg = Debug|AnyCPU
+		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Debug|Mixed Platforms.Build.0 = Debug|AnyCPU
+		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Debug|x86.ActiveCfg = Debug|AnyCPU
+		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Debug|x86.Build.0 = Debug|AnyCPU
+		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Release|Any CPU.ActiveCfg = Release|AnyCPU
+		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Release|Mixed Platforms.ActiveCfg = Release|AnyCPU
+		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Release|Mixed Platforms.Build.0 = Release|AnyCPU
+		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Release|x86.ActiveCfg = Release|AnyCPU
+		{75A07F12-FF61-4CE9-8541-25FBB76A9870}.Release|x86.Build.0 = Release|AnyCPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Debug|Any CPU.ActiveCfg = Debug|AnyCPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Debug|Any CPU.Build.0 = Debug|AnyCPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Debug|Mixed Platforms.ActiveCfg = Debug|AnyCPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Debug|Mixed Platforms.Build.0 = Debug|AnyCPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Debug|x86.ActiveCfg = Debug|AnyCPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Debug|x86.Build.0 = Debug|AnyCPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Release|Mixed Platforms.ActiveCfg = Release|AnyCPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Release|Mixed Platforms.Build.0 = Release|AnyCPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Release|x86.ActiveCfg = Release|AnyCPU
+		{BE5DD8C7-D4D1-4EA9-B844-0A1C81ED5DC9}.Release|x86.Build.0 = Release|AnyCPU
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Debug|Any CPU.ActiveCfg = Debug|AnyCPU
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Debug|Mixed Platforms.ActiveCfg = Debug|AnyCPU
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Debug|Mixed Platforms.Build.0 = Debug|AnyCPU
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Debug|x86.ActiveCfg = Debug|AnyCPU
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Debug|x86.Build.0 = Debug|AnyCPU
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Release|Any CPU.ActiveCfg = Release|AnyCPU
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Release|Mixed Platforms.ActiveCfg = Release|AnyCPU
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Release|Mixed Platforms.Build.0 = Release|AnyCPU
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Release|x86.ActiveCfg = Release|AnyCPU
+		{565D6E2F-22E6-4D0E-95A5-F248CCD43EC9}.Release|x86.Build.0 = Release|AnyCPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Calculon.Repl\Calculon.Repl.fsproj
