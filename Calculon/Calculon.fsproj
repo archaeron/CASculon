@@ -36,6 +36,7 @@
     <Compile Include="Types.fs" />
     <Compile Include="Parser.fs">
     </Compile>
+    <Compile Include="Simplify.fs" />
     <Compile Include="Printer.fs" />
     <None Include="packages.config" />
     <None Include="app.config" />
