@@ -1,7 +1,7 @@
 // include Fake lib
 #r @"packages\FAKE\tools\FakeLib.dll"
-#r @"packages\FSharpLint.0.1.2\FSharpLint.Framework.dll"
-#r @"packages\FSharpLint.0.1.2\FSharpLint.Application.dll"
+#r @"packages\FSharpLint.0.1.3\FSharpLint.Framework.dll"
+#r @"packages\FSharpLint.0.1.3\FSharpLint.Application.dll"
 open Fake
 open System
 open FSharpLint.Application
@@ -76,7 +76,6 @@ Target "Lint" (fun _ ->
         }
     RunLint.parseProject lintOptions |> printfn "%A"
 )
-
 
 // Default target
 Target "Default" (fun _ ->
