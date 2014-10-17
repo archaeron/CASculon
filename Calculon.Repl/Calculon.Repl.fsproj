@@ -8,6 +8,7 @@
     <RootNamespace>Calculon.Repl</RootNamespace>
     <AssemblyName>Calculon.Repl</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>d52822b0</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,5 +54,9 @@
       <Project>{75A07F12-FF61-4CE9-8541-25FBB76A9870}</Project>
       <Name>Calculon</Name>
     </ProjectReference>
+    <Reference Include="UnionArgParser">
+      <HintPath>..\packages\UnionArgParser.0.8.0\lib\net40\UnionArgParser.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
 </Project>

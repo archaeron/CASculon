@@ -4,13 +4,11 @@
 module Calculon.Repl.Core
 
 open System
-open Calculon.Parser
-open Calculon.Printer
 open System.Text
  
-let print p str =
-    match p str with
-    | Choice1Of2 result   -> printfn "Success: %A" <| print result
+let print printer str =
+    match Calculon.Parser.parse str with
+    | Choice1Of2 result   -> result |> Calculon.Simplify.simplify |> printer |> printfn "%s"
     | Choice2Of2 errorMsg -> printfn "Failure: %s" errorMsg
 
 
@@ -125,9 +123,7 @@ let rec inputLoop (input:string) (history, hIndex) =
         render i
         inputLoop i (history, hIndex)
 
-
-
-let rec repl (history, hIndex) =
+let rec repl printer (history, hIndex) =
     Console.Write lineIndicator
     let input = inputLoop "" (history, hIndex)
     Console.Write('\n')
@@ -135,8 +131,8 @@ let rec repl (history, hIndex) =
     | "quit" -> Console.WriteLine "byebye"
     | "history" ->
         printfn "%A" history
-        repl (input::history, hIndex + 1)
+        repl printer (input::history, hIndex + 1)
     | _ -> 
-        print parse input
+        print printer input
         current := 0
-        repl (input::history, hIndex + 1)
+        repl printer (input::history, hIndex + 1)
