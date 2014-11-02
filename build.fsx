@@ -1,17 +1,17 @@
 // include Fake lib
 #r @"packages\FAKE\tools\FakeLib.dll"
-#r @"packages\FSharpLint.0.1.3\FSharpLint.Framework.dll"
-#r @"packages\FSharpLint.0.1.3\FSharpLint.Application.dll"
+#r @"packages\FSharpLint\FSharpLint.Framework.dll"
+#r @"packages\FSharpLint\FSharpLint.Application.dll"
 open Fake
 open System
 open FSharpLint.Application
 
 
 let solutionFile  = "Calculon"
-let calculonProjectFile = "Calculon\Calculon.fsproj"
+let calculonProjectFile = @"Calculon/Calculon.fsproj"
 let testAssemblies = "Tests/bin/Release/*Tests*.dll"
 let binDirs = ["Calculon/bin"; "Calculon.Repl/bin"; "Tests/bin"]
-let fsharpCore = "packages\FSharpLint.0.1.2"
+let fsharpCore = @"packages\FSharp.Core.Microsoft.Signed\lib\net45"
 
 Target "RestorePackages" RestorePackages
 

@@ -10,7 +10,7 @@ module Parser =
     let ws = spaces
 
     // parse a string with whitespace after it
-    let str_ws str = pstring str .>> ws
+    let stringWhitespace str = pstring str .>> ws
 
     // parse a float number to an expression
     let numberParser =
@@ -26,20 +26,17 @@ module Parser =
 
     // parse a list of pElement with a separator between the pElements
     let listParser separator pElement =
-        ws >>. sepBy (pElement .>> ws) (str_ws separator)
-    
-
-    let matrixBetweenDelimiters sOpen sClose secondarySeparator separator  pElement f =
-        between (pstring sOpen) (pstring sClose)
-            (ws >>. sepBy (listParser secondarySeparator pElement .>> spaces) (str_ws separator) |>> f)
+        ws >>. sepBy (pElement .>> ws) (stringWhitespace separator)
 
     let matrixParser : Parser<Expr, Unit> =
-        matrixBetweenDelimiters "[" "]" "," ";" expr (Constant << Matrix)
+        let f = Constant << Matrix
+        between (pstring "[") (pstring "]")
+            (ws >>. sepBy (listParser "," expr .>> spaces) (stringWhitespace ";") |>> f)
 
     let constantParser =
         numberParser <|> identifierParser <|> matrixParser
 
-    let term = (ws >>. constantParser) <|> between (str_ws "(") (str_ws ")") expr
+    let term = (ws >>. constantParser) <|> between (stringWhitespace "(") (stringWhitespace ")") expr
     opp.TermParser <- term
 
 
